@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruba</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <form id="form">
+        <div class="container">
+            <h1>Inicio Sesión</h1>
+            <div class="continerInputs">
+                <label>Correo</label>
+                <input id="email" type="email" placeholder="Ingrese su usuario">
+            </div>
+            <div class="continerInputs">
+                <label>Contraseña</label>
+                <input id="password" type="password" placeholder="Ingrese su contraseña">
+            </div>
+            <button>Entrar</button>
+            <p id="erros"></p>
+        </div>
+    </form>
+
+    <script>
+
+
+
+        const form = document.getElementById('form') 
+        const Input_email = document.getElementById('email') 
+        const Input_password = document.getElementById('password')
+        const error = document.getElementById('erros')
+
+
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            const valueInputs = {
+                value_email: Input_email.value,
+                valuePassword: Input_password.value
+            }
+
+            if (Object.entries(valueInputs).every(value => value[1] !== '')) {
+                error.textContent = ''
+                dataPost()
+            }
+            else {
+                console.log('no console')
+                error.textContent = 'Asegurate que los campos esten llenos'
+                error.style.color = 'red'
+                Input_email.style.boxShadow = '15px 5px 10px #99484844'
+                Input_password.style.boxShadow = '15px 5px 10px #99484844'
+            }
+        })
+
+        const dataPost = async () => {
+            const credentials = {
+                email: Input_email.value,
+                password: Input_password.value
+            }
+            try {
+                const repsonse = await fetch('http://127.0.0.1:8000/api/login', {
+                    method: 'POST',
+                    body: JSON.stringify(credentials),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                const json = await repsonse.json()
+                if (json.message === "Autorizado") {
+                    console.log(json.token)
+                    window.location.href = 'crud.html'
+                }
+                else {
+                    error.textContent = json.message
+                    error.style.color = 'red'
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    </script>
+
+</body>
+
+</html>

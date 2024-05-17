@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+    padding: 0; 
+    background:
+    radial-gradient(circle farthest-side at 0% 50%,#000000 23.5%,#0000 0)33.6px 48px,
+    radial-gradient(circle farthest-side at 0% 50%,#42465e 24%,#0000 0)30.4px 48px,
+    linear-gradient(#000000 14%,#0000 0, #0000 85%,#000000 0)0 0,
+    linear-gradient(150deg,#000000 24%,#42465e 0,#42465e 26%,#0000 0,#0000 74%,#42465e 0,#42465e 76%,#000000 0)0 0,
+    linear-gradient(30deg,#000000 24%,#42465e 0,#42465e 26%,#0000 0,#0000 74%,#42465e 0,#42465e 76%,#000000 0)0 0,
+    linear-gradient(90deg,#42465e 2%,#000000 0,#000000 98%,#42465e 0%)0 0 #000000;
+background-size: 64px 96px;
+background-color: #000000;
+}
+
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    flex-direction: column;
+}
+
+.container{
+    background: white;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    text-align: center;
+    color: darkgrey;
+}
+
+.continerInputs{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+label{
+    margin-bottom: 5px;
+    font-size: medium;
+}
+
+input{
+    outline: none;
+    border: none;
+    padding: 10px;
+    box-shadow: 15px 5px 10px #48529944;
+}
+
+button{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 10%;
+}
+
+button:hover{
+    background: #42465e;
+    cursor: pointer;
+}
